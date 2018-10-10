@@ -15,6 +15,8 @@ class Album extends Component {
     };
   }
   render() {
+    const {songs,slug} = this.state.album;
+
     return (
       <section className="album">
         <section id="album-info">
@@ -32,6 +34,13 @@ class Album extends Component {
              <col id="song-duration-column" />
            </colgroup>  
            <tbody>
+             {songs.map((song,index)=>
+                <tr key={song.title + slug}>
+                  <td>{index+1}</td>
+                  <td>{song.title}</td> 
+                  <td>{`${Math.round(song.duration)} sec`}</td>
+                </tr>
+              )}
            </tbody>
          </table>
       </section>
