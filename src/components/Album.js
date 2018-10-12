@@ -13,7 +13,9 @@ class Album extends Component {
     this.state = {
       album: album,
       currentSong: album.songs[0],
-      isPlaying: false
+      isPlaying: false,
+      isPaused: false,
+      hovered:null
     };
 
     this.audioElement = document.createElement('audio');
@@ -22,12 +24,12 @@ class Album extends Component {
 
   play() {
     this.audioElement.play();
-    this.setState({ isPlaying: true });
+    this.setState({ isPlaying: true, isPaused:false });
   }
 
   pause() {
     this.audioElement.pause();
-    this.setState({ isPlaying: false });
+    this.setState({ isPlaying: false, isPaused:true });
   }   
 
   setSong(song) {
@@ -45,8 +47,23 @@ class Album extends Component {
     }
   }
 
+  handleMouseEnter(song){
+    this.setState({ hovered: song });
+  }
+  handleMouseOut(){
+    this.setState({ hovered: null });
+  }
+
+  getClassName(song){
+    const {currentSong,isPaused,isPlaying,hovered} = this.state;
+    if(currentSong === song && isPlaying){ return "icon ion-md-pause"}
+    if(currentSong === song && isPaused){return "icon ion-md-play-circle"}
+    return hovered === song? "icon ion-md-play-circle":null;
+  }
+
   render() {
     const {songs} = this.state.album;
+    console.log(this.state);//todo
 
     return (
       <section className="album">
@@ -65,12 +82,21 @@ class Album extends Component {
              <col id="song-duration-column" />
            </colgroup>  
            <tbody>
-             {songs.map((song,index)=>
-                <tr className="song" key={index} onClick={() => this.handleSongClick(song)} >
-                  <td>{index+1}</td>
+             {songs.map((song,index)=>{
+               const spanClass = this.getClassName(song);
+                return <tr 
+                  className="song"
+                  key={index} 
+                  onMouseEnter={()=>this.handleMouseEnter(song)}
+                  onMouseLeave={()=>this.handleMouseOut()}
+                  onClick={() => this.handleSongClick(song)} >
+                  <td>
+                  <span className={spanClass}>{spanClass?null:index+1}</span>
+                  </td>
                   <td>{song.title}</td> 
                   <td>{`${Math.round(song.duration)} sec`}</td>
                 </tr>
+              }
               )}
            </tbody>
          </table>
