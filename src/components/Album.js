@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import albumData from './../data/albums';
+import PlayerBar from './PlayerBar';
 
 
 class Album extends Component {
@@ -47,6 +48,14 @@ class Album extends Component {
     }
   }
 
+  handlePrevClick() {
+    const currentIndex = this.state.album.songs.findIndex(song => this.state.currentSong === song);
+    const newIndex = Math.max(0, currentIndex - 1);
+    const newSong = this.state.album.songs[newIndex];
+    this.setSong(newSong);
+    this.play();
+  }
+
   handleMouseEnter(song){
     this.setState({ hovered: song });
   }
@@ -54,7 +63,7 @@ class Album extends Component {
     this.setState({ hovered: null });
   }
 
-  getClassName(song){
+  getSpanClass(song){
     const {currentSong,isPaused,isPlaying,hovered} = this.state;
     if(currentSong === song && isPlaying){ return "icon ion-md-pause"}
     if(currentSong === song && isPaused){return "icon ion-md-play-circle"}
@@ -63,7 +72,7 @@ class Album extends Component {
 
   render() {
     const {songs} = this.state.album;
-    console.log(this.state);//todo
+    const {isPlaying, currentSong} = this.state;
 
     return (
       <section className="album">
@@ -83,7 +92,7 @@ class Album extends Component {
            </colgroup>  
            <tbody>
              {songs.map((song,index)=>{
-               const spanClass = this.getClassName(song);
+               const spanClass = this.getSpanClass(song);
                 return <tr 
                   className="song"
                   key={index} 
@@ -100,6 +109,12 @@ class Album extends Component {
               )}
            </tbody>
          </table>
+         <PlayerBar
+           isPlaying={this.state.isPlaying}
+           currentSong={this.state.currentSong}
+           handlePrevClick={() => this.handlePrevClick()}
+           handleSongClick={() => this.handleSongClick(this.state.currentSong)}
+         />
       </section>
     );
   }
