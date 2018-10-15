@@ -6,7 +6,9 @@ class PlayerBar extends Component {
       handleSongClick,
       handleNextClick,
       handleTimeChange,
+      handleVolumeChange,
       currentTime,
+      currentVolume,
       isPlaying,
       duration,
       formatTime
@@ -39,9 +41,17 @@ class PlayerBar extends Component {
            <div className="total-time">{formatTime(duration)}</div> 
          </section>
          <section id="volume-control">
-           <div className="icon ion-volume-low"></div>
-            <input type="range" className="seek-bar" value="80" />
-           <div className="icon ion-volume-high"></div>
+           <div className="icon ion-md-volume-low"></div>
+            <input 
+            type="range" 
+            className="seek-bar" 
+            max="1" 
+            min="0" 
+            step="0.01" 
+            onChange={handleVolumeChange}
+            value={currentVolume} />
+           <div className="icon ion-md-volume-high"></div>
+           <span>{Math.round(currentVolume*100)}</span>
         </section>
       </section>
     );
