@@ -10,14 +10,22 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header>
-          <nav>
-            <Link to='/'>Landing</Link>
-            <Link to='/library'>Library</Link>
-          </nav>
-          <h1>Bloc Jams</h1>
-         </header>
-         <main>
+        <div  className="w3-top">
+          <header className="w3-bar w3-white w3-wide w3-card">
+            <div  className="w3-cell-row">
+              <div className="w3-container w3-cell">
+                <Link to='/'  className="w3-bar-item w3-button"><span style={{fontSize:"2em"}}><b>B</b>loc <b>J</b>ams</span></Link>
+              </div>
+              <nav className="w3-container w3-cell w3-cell-middle">
+                <Link to='/library' className="w3-bar-item w3-button w3-right" >Listen Now!</Link>
+              </nav>
+            </div>
+            
+            
+          </header>
+        </div>
+        
+         <main style={{border:"1px solid green"}}>
           <Route exact path="/" component={Landing} />
           <Route path="/library" component={Library} />
           <Route path="/album/:slug" component={Album} />
