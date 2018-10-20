@@ -147,7 +147,7 @@ class Album extends Component {
     const { songs } = this.state.album;
 
     return (
-      <section className="album w3-flat-belize-hole" style={{ paddingTop: "78px" , minHeight:"105vh"}}>
+      <section className="album w3-flat-belize-hole" style={{ paddingTop: "78px" , paddingBottom:"130px", minHeight:"105vh"}}>
         <div className="w3-row" style={{ height: "50%" }}>
           <section id="album-info" className="w3-half w3-container w3-padding">
             <img

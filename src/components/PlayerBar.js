@@ -22,7 +22,7 @@ class PlayerBar extends Component {
         style={{ backgroundColor: "rgba(0,0,0,0.3)" }}
       >
         <div className="w3-row w3-padding">
-          <div className="w3-col m8">
+          <div className="w3-col m8 track-controls">
             <section id="buttons" className="w3-row-padding">
               <button
                 id="previous"
@@ -67,19 +67,23 @@ class PlayerBar extends Component {
               </div>
             </section>
           </div>
-          <section id="volume-control" className="w3-third w3-container">
-            <div className="icon ion-md-volume-low w3-quarter" />
-            <input
-              type="range"
-              className="seek-bar"
-              max="1"
-              min="0"
-              step="0.01"
-              onChange={handleVolumeChange}
-              value={currentVolume}
-            />
-            <div className="icon ion-md-volume-high" />
-            <span>{Math.round(currentVolume * 100)}</span>
+          <section id="volume-control" className="w3-col m4 " style={{height:"100%"}}>
+            <section className="w3-row-padding" >
+              <span class="w3-padding w3-large  w3-transparent w3-border">{Math.round(currentVolume * 100)}</span>
+            </section>
+            <section className="w3-row-padding">
+              <div className="icon ion-md-volume-low w3-col s1" />
+              <input
+                type="range"
+                className="seek-bar w3-col s10 "
+                max="1"
+                min="0"
+                step="0.01"
+                onChange={handleVolumeChange}
+                value={currentVolume}
+              />
+              <div className="icon ion-md-volume-high w3-col s1" />
+            </section>
           </section>
         </div>
       </section>
