@@ -17,7 +17,7 @@ class App extends Component {
                 <Link to='/'  className="w3-bar-item w3-button"><span style={{fontSize:"2em"}}><b>B</b>loc <b>J</b>ams</span></Link>
               </div>
               <nav className="w3-container w3-cell w3-cell-middle">
-                <Link to='/library' className="w3-bar-item w3-button w3-right" >Listen Now!</Link>
+                <Link to='/library' className="w3-bar-item w3-button w3-right" >Library!</Link>
               </nav>
             </div>
             
@@ -25,7 +25,7 @@ class App extends Component {
           </header>
         </div>
         
-         <main style={{border:"1px solid green"}}>
+         <main>
           <Route exact path="/" component={Landing} />
           <Route path="/library" component={Library} />
           <Route path="/album/:slug" component={Album} />
