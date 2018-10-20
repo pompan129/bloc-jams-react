@@ -1,0 +1,36 @@
+.seek-bar {
+    -webkit-appearance: none;
+    height: 5px;
+    width:100%;
+    border-radius: 5px;
+    background:rgba(25,25,25,0.8);
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.seek-bar:hover {
+    opacity: 1;
+}
+
+.seek-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background:transparent;
+    border: 2px solid #ecf0f1;
+    cursor: pointer;
+}
+
+.seek-bar::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    /*background: #4CAF50;*/
+    cursor: pointer;
+}
+
+button:focus {outline:0;}

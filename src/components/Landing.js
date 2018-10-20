@@ -4,7 +4,7 @@ import React from 'react';
 
 
 const Landing = () => (
-  <section className="landing w3-flat-midnight-blue" >
+  <section className="landing w3-flat-midnight-blue w3-animate-opacity" >
     <div className="hero-container w3-display-container w3-content w3-wide"  style={{maxWidth:"1500px"}}>
       <img className="w3-image w3-opacity" src="/assets/images/home/microphoneboy2.jpg" alt="Architecture" width="1500" height="600" ></img>
       <div className="w3-display-middle w3-center">

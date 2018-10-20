@@ -9,21 +9,28 @@ class Library extends Component {
   }
   render() {
     return (
-      <div style={{ marginTop: "60px"}}>
-        <section className="library w3-row-padding w3-grayscale-min">
+      <div className="w3-flat-pomegranate" style={{minHeight: "100vh", paddingTop:"78px"}}>
+        <section className="library w3-row-padding">
           {this.state.albums.map((album, index) => (
-            <Link to={`/album/${album.slug}`} key={index}>
-              <div className="w3-col l4 m6 w3-margin-bottom">
-                <img
-                  src={album.albumCover}
-                  alt={album.title}
-                  style={{ width: "100%" }}
-                />
-                <div>{album.title}</div>
-                <div>{album.artist}</div>
-                <div>{album.songs.length} songs</div>
-              </div>
-            </Link>
+            <div className="w3-col l3 m4 s6 w3-margin-bottom">
+              <Link
+                to={`/album/${album.slug}`}
+                key={index}
+                style={{textDecoration:"none"}}
+              >
+                <div className="w3-margin-bottom w3-black w3-animate-zoom w3-hover-shadow">
+                  <img
+                    className="w3-grayscale-min"
+                    src={album.albumCover}
+                    alt={album.title}
+                    style={{ width: "100%" }}
+                  />
+                  <div className="w3-xlarge">{album.title}</div>
+                  <div className="w3-large">{album.artist}</div>
+                  <div>{album.songs.length} songs</div>
+                </div>
+              </Link>
+            </div>
           ))}
         </section>
       </div>
