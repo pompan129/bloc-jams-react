@@ -26,7 +26,7 @@ class PlayerBar extends Component {
             <section id="buttons" className="w3-row-padding">
               <button
                 id="previous"
-                onClick={this.props.handlePrevClick}
+                onClick={handlePrevClick}
                 className="w3-button w3-transparent w3-circle w3-border"
               >
                 <span className="fa fa-step-backward" />
@@ -67,22 +67,35 @@ class PlayerBar extends Component {
               </div>
             </section>
           </div>
-          <section id="volume-control" className="w3-col m4 " style={{height:"100%"}}>
-            <section className="w3-row-padding" >
-              <span class="w3-padding w3-large  w3-transparent w3-border">{Math.round(currentVolume * 100)}</span>
+          <section id="volume-control" className="w3-col m4 ">
+            <section className="w3-row-padding">
+              <div className="w3-col">
+                <span
+                  className="w3-transparent w3-border"
+                  style={{ display: "inline-block" , padding:"8px 0", width:"36px"}}
+                >
+                  {Math.round(currentVolume * 100)}
+                </span>
+              </div>
             </section>
             <section className="w3-row-padding">
-              <div className="icon ion-md-volume-low w3-col s1" />
-              <input
-                type="range"
-                className="seek-bar w3-col s10 "
-                max="1"
-                min="0"
-                step="0.01"
-                onChange={handleVolumeChange}
-                value={currentVolume}
-              />
-              <div className="icon ion-md-volume-high w3-col s1" />
+              <div className=" w3-col s1">
+                <span className="fa fa-volume-down" />
+              </div>
+              <div className="w3-col s10">
+                <input
+                  type="range"
+                  className="seek-bar"
+                  max="1"
+                  min="0"
+                  step="0.01"
+                  onChange={handleVolumeChange}
+                  value={currentVolume}
+                />
+              </div>
+              <div className=" w3-col s1" >
+              <span className="fa fa-volume-up"></span>
+              </div>
             </section>
           </section>
         </div>
