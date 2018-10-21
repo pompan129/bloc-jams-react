@@ -115,12 +115,12 @@ class Album extends Component {
   getSpanClass(song) {
     const { currentSong, isPaused, isPlaying, hovered } = this.state;
     if (currentSong === song && isPlaying) {
-      return "icon ion-md-pause";
+      return "fa fa-pause";
     }
     if (currentSong === song && isPaused) {
-      return "icon ion-md-play-circle";
+      return "fa fa-play";
     }
-    return hovered === song ? "icon ion-md-play-circle" : null;
+    return hovered === song ? "fa fa-play" : null;
   }
 
   handleTimeChange(e) {
@@ -147,8 +147,8 @@ class Album extends Component {
     const { songs } = this.state.album;
 
     return (
-      <section className="album w3-flat-belize-hole" style={{ paddingTop: "78px" , paddingBottom:"140px", minHeight:"105vh"}}>
-        <div className="w3-row" style={{ height: "50%" }}>
+      <section className="album w3-indigo" style={{ paddingTop: "78px" , paddingBottom:"145px", minHeight:"105vh"}}>
+        <div className="w3-row" >
           <section id="album-info" className="w3-half w3-container w3-padding">
             <img
               id="album-cover-art"
@@ -162,19 +162,20 @@ class Album extends Component {
               <div id="release-info" className="w3-xlarge">{this.state.album.releaseInfo}</div>
             </div>
           </section>
-          <div className="w3-half w3-container">
-            <table id="song-list">
+          <div className="w3-half w3-container w3-display-container">
+            <table id="song-list" className="w3-table w3-large  w3-bordered">
               <colgroup>
-                <col id="song-number-column" />
-                <col id="song-title-column" />
-                <col id="song-duration-column" />
+                <col id="song-number-column" width="25%" />
+                <col id="song-title-column" width="60%"/>
+                <col id="song-duration-column" width="15%" />
               </colgroup>
               <tbody>
                 {songs.map((song, index) => {
                   const spanClass = this.getSpanClass(song);
                   return (
                     <tr
-                      className="song"
+                      style={{cursor: "pointer"}}
+                      className="song  w3-hover-black w3-hover-opacity"
                       key={index}
                       onMouseEnter={() => this.handleMouseEnter(song)}
                       onMouseLeave={() => this.handleMouseOut()}

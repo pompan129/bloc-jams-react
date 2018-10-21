@@ -18,7 +18,7 @@ class Library extends Component {
                 key={index}
                 style={{textDecoration:"none"}}
               >
-                <div className="w3-margin-bottom w3-black w3-animate-zoom w3-hover-shadow">
+                <div className="w3-margin-bottom w3-animate-zoom w3-hover-shadow" style={{backgroundColor:"rgba(0,0,0,0.6)"}}>
                   <img
                     className="w3-grayscale-min"
                     src={album.albumCover}

@@ -27,14 +27,14 @@ class PlayerBar extends Component {
               <button
                 id="previous"
                 onClick={handlePrevClick}
-                className="w3-button w3-transparent w3-circle w3-border"
+                className="w3-button w3-transparent w3-circle w3-border w3-hover-black w3-hover-opacity"
               >
                 <span className="fa fa-step-backward" />
               </button>
               <button
                 id="play-pause"
                 onClick={handleSongClick}
-                className="w3-button w3-transparent w3-circle w3-border"
+                className="w3-button w3-transparent w3-circle w3-border w3-hover-black w3-hover-opacity"
                 style={{ margin: "0 5px" }}
               >
                 <span className={isPlaying ? "fa fa-pause" : "fa fa-play"} />
@@ -42,16 +42,16 @@ class PlayerBar extends Component {
               <button
                 id="next"
                 onClick={handleNextClick}
-                className="w3-button w3-transparent w3-circle w3-border"
+                className="w3-button w3-transparent w3-circle w3-border w3-hover-black w3-hover-opacity"
               >
                 <span className="fa fa-step-forward" />
               </button>
             </section>
             <section id="time-control" className="w3-row-padding">
-              <div className="current-time w3-col s1">
+              <div className="current-time w3-col"  style={{ width: "15%" }}>
                 <span className="w3-right">{formatTime(currentTime)}</span>
               </div>
-              <div className="w3-col s10">
+              <div className="w3-col"  style={{ width: "70%" }}>
                 <input
                   type="range"
                   className="seek-bar "
@@ -62,7 +62,7 @@ class PlayerBar extends Component {
                   onChange={handleTimeChange}
                 />
               </div>
-              <div className="total-time w3-col s1">
+              <div className="total-time w3-col"  style={{ width: "15%" }}>
                 <span className="w3-left">{formatTime(duration)}</span>
               </div>
             </section>
@@ -72,17 +72,21 @@ class PlayerBar extends Component {
               <div className="w3-col">
                 <span
                   className="w3-transparent w3-border"
-                  style={{ display: "inline-block" , padding:"8px 0", width:"36px"}}
+                  style={{
+                    display: "inline-block",
+                    padding: "8px 0",
+                    width: "36px"
+                  }}
                 >
                   {Math.round(currentVolume * 100)}
                 </span>
               </div>
             </section>
             <section className="w3-row-padding">
-              <div className=" w3-col s1">
+              <div className=" w3-col " style={{ width: "10%" }}>
                 <span className="fa fa-volume-down" />
               </div>
-              <div className="w3-col s10">
+              <div className="w3-col" style={{ width: "80%" }}>
                 <input
                   type="range"
                   className="seek-bar"
@@ -93,8 +97,8 @@ class PlayerBar extends Component {
                   value={currentVolume}
                 />
               </div>
-              <div className=" w3-col s1" >
-              <span className="fa fa-volume-up"></span>
+              <div className=" w3-col" style={{ width: "10%" }}>
+                <span className="fa fa-volume-up" />
               </div>
             </section>
           </section>
